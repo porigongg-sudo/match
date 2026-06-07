@@ -1,70 +1,177 @@
-body {
-    font-family: sans-serif;
-    background-color: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+/* --- 色の設計図（変数）の設定 --- */
+:root {
+    --bg-body: #f4f6f9;       /* 全体の背景（薄いグレー） */
+    --bg-card: #ffffff;       /* カードやヘッダーの背景（白） */
+    --text-main: #333333;     /* メインの文字色（濃いグレー） */
+    --text-sub: #64748b;      /* 補足の文字色（薄いグレー） */
+    --border-color: #e2e8f0;  /* 線の色 */
+    --bg-hover: #eff6ff;      /* ホバー時の背景（薄い青） */
+    --text-link: #2563eb;     /* リンクやアクティブの色（青） */
+}
+
+/* 🌙 ダークモード用の色の設計図（このクラスがつくと色が一変します） */
+body.dark-mode {
+    --bg-body: #0f172a;       /* 全体の背景（濃い紺色） */
+    --bg-card: #1e293b;       /* カードやヘッダーの背景（少し明るい紺） */
+    --text-main: #f8fafc;     /* メインの文字色（ほぼ白） */
+    --text-sub: #94a3b8;      /* 補足の文字色（明るいグレー） */
+    --border-color: #334155;  /* 線の色（暗め） */
+    --bg-hover: #1e3a8a;      /* ホバー時の背景（濃い青） */
+    --text-link: #38bdf8;     /* リンクやアクティブの色（水色） */
+}
+
+/* 全体のリセット（ここからは色の変数を使います） */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease; /* 切り替えを滑らかにする魔法 */
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
 }
 
 .container {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 500px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+}
+
+/* ヘッダー */
+header {
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 1.5rem;
+    font-size: 20px;
+    color: var(--text-link);
 }
 
-.form-group {
-    margin-bottom: 1rem;
+/* ボタン */
+button, .btn-main, .btn-sub {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
 }
 
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #555;
-}
-
-input[type="text"], textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.mode-selection {
-    display: flex;
-    gap: 1rem;
-}
-
-button {
-    width: 100%;
-    padding: 1rem;
-    background-color: #007bff;
+.btn-main {
+    background-color: #2563eb;
     color: white;
     border: none;
+}
+
+.btn-sub {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+/* サイドバー（カテゴリー） */
+.sidebar {
+    width: 250px;
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    height: fit-content;
+}
+
+.sidebar h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    padding: 10px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1rem;
+    margin-bottom: 5px;
+    font-size: 14px;
 }
 
-button:hover {
-    background-color: #0056b3;
+.sidebar li:hover, .sidebar li.active {
+    background-color: var(--bg-hover);
+    color: var(--text-link);
+    font-weight: bold;
 }
 
-a {
-    display: block;
-    text-align: center;
-    margin-top: 1rem;
-    color: #007bff;
-    text-decoration: none;
+/* ユーザー一覧 */
+.content {
+    flex: 1;
+}
+
+.content h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+/* ユーザーカード */
+.user-card {
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.user-header {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.avatar-sample {
+    width: 50px;
+    height: 50px;
+    background-color: var(--border-color);
+    border-radius: 50%;
+}
+
+.user-title {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-top: 2px;
+}
+
+.user-bio {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+
+.user-skills span {
+    background-color: var(--bg-body);
+    color: var(--text-sub);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 5px;
+    border: 1px solid var(--border-color);
 }

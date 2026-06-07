@@ -3,33 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>プロフィール設定 - MyProf</title>
+    <title>簡易クラウドワークス - プロフィール編集</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>プロフィール設定</h1>
-        <form id="profileForm">
-            <div class="form-group">
-                <label for="username">ユーザー名:</label>
-                <input type="text" id="username" name="username" required>
+
+    <header>
+        <div class="header-container">
+            <h1>🤝 クラウドマッチ（簡易版）</h1>
+            <nav style="display: flex; align-items: center; gap: 10px;">
+                <button id="dark-mode-toggle" class="btn-sub" style="font-size: 16px; padding: 6px 12px;">🌙</button>
+                <a href="/" class="btn-sub">ユーザー一覧に戻る</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="justify-content: center;">
+        <section class="content" style="max-width: 600px; width: 100%;">
+            <div class="user-card" style="padding: 30px;">
+                <h2 style="margin-bottom: 25px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">プロフィールの編集</h2>
+                
+                <form action="/api/profile" method="POST">
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-weight: bold; margin-bottom: 8px;">お名前</label>
+                        <input type="text" name="name" required placeholder="例：各務 浩平" 
+                               style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-body); color: var(--text-main);">
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-weight: bold; margin-bottom: 8px;">カテゴリー（メイン職種）</label>
+                        <select name="title" required
+                                style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-body); color: var(--text-main);">
+                            <option value="エンジニア">エンジニア</option>
+                            <option value="デザイナー">デザイナー</option>
+                            <option value="動画編集ライター">動画編集ライター</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; font-weight: bold; margin-bottom: 8px;">スキル（カンマ区切り）</label>
+                        <input type="text" name="skills" placeholder="例：JavaScript, Node.js, Figma" 
+                               style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-body); color: var(--text-main);">
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; font-weight: bold; margin-bottom: 8px;">自己紹介文（アピールポイント）</label>
+                        <textarea name="bio" rows="5" placeholder="得意なことや実績などを自由に入力してください。" 
+                                  style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-body); color: var(--text-main); line-height: 1.6;"></textarea>
+                    </div>
+
+                    <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                        <a href="/" class="btn-sub" style="display: inline-block; line-height: 20px;">キャンセル</a>
+                        <button type="submit" class="btn-main">プロフィールを保存する</button>
+                    </div>
+
+                </form>
             </div>
-            <div class="form-group">
-                <label for="bio">自己紹介:</label>
-                <textarea id="bio" name="bio" rows="4"></textarea>
-            </div>
-            <div class="form-group">
-                <label>メインモード設定:</label>
-                <div class="mode-selection">
-                    <input type="radio" id="mode-play" name="main_mode" value="play" checked>
-                    <label for="mode-play">遊び</label>
-                    <input type="radio" id="mode-business" name="main_mode" value="business">
-                    <label for="mode-business">ビジネス</label>
-                </div>
-            </div>
-            <button type="submit">保存して次へ</button>
-            <p><a href="user_list.html">マッチングリストへ</a></p>
-        </form>
-    </div>
+        </section>
+    </main>
+
+    <script>
+        const toggleBtn = document.getElementById('dark-mode-toggle');
+        
+        // ページ読み込み時に現在のモードを確認
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            toggleBtn.textContent = '☀️';
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                toggleBtn.textContent = '☀️';
+                localStorage.setItem('darkMode', 'enabled'); // モードを記憶
+            } else {
+                toggleBtn.textContent = '🌙';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+    </script>
 </body>
 </html>
