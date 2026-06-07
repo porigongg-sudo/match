@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メッセージ - MyProf</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            height: 60vh;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #e9ecef;
+            margin-top: 1rem;
+        }
+        .message-list {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: scroll;
+        }
+        .message {
+            margin-bottom: 0.5rem;
+        }
+        .message-input {
+            display: flex;
+            padding: 0.5rem;
+            border-top: 1px solid #ccc;
+            background-color: white;
+        }
+        .message-input input {
+            flex-grow: 1;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+        .message-input button {
+            width: auto;
+            padding: 0.5rem 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>メッセージ</h1>
+        <div class="message-container">
+            <div class="message-list">
+                <div class="message">ユーザーA: こんにちは！</div>
+                <div class="message">自分: モード設定見ました。よろしく！</div>
+            </div>
+            <div class="message-input">
+                <input type="text" placeholder="メッセージを入力...">
+                <button>送信</button>
+            </div>
+        </div>
+        <p><a href="user_list.html">マッチングリストへ戻る</a></p>
+    </div>
+</body>
+</html>

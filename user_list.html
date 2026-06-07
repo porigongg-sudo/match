@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザーリスト - MyProf</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .user-list-item {
+            padding: 1rem;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            cursor: pointer;
+        }
+        .user-list-item:hover {
+            background-color: #f0f0f0;
+        }
+        .mode-tag {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            color: white;
+            font-size: 0.8rem;
+        }
+        .mode-play {
+            background-color: #ff4081;
+        }
+        .mode-business {
+            background-color: #2196f3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>マッチングリスト</h1>
+        <div class="user-list">
+            <div class="user-list-item" onclick="location.href='message.html'">
+                <span>ユーザーA</span>
+                <span class="mode-tag mode-play">遊び</span>
+            </div>
+            <div class="user-list-item" onclick="location.href='message.html'">
+                <span>ユーザーB</span>
+                <span class="mode-tag mode-business">ビジネス</span>
+            </div>
+            </div>
+        <p><a href="profile_edit.html">プロフィール設定に戻る</a></p>
+    </div>
+</body>
+</html>
