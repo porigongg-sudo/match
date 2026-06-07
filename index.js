@@ -16,9 +16,29 @@ if (mongoUri) {
 // フォルダ内のHTMLやCSSをそのまま表示できるようにする設定
 app.use(express.static(__dirname));
 
-// アクセスが来たら user_list.html を返す
+// アクセスが来たら index.html を返す
 app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+app.get("/user_list", (req, res) => {
   res.sendFile(path.join(__dirname, "user_list.html"));
+});
+
+app.get("/profile_edit", (req, res) => {
+  res.sendFile(path.join(__dirname, "profile_edit.html"));
+});
+
+app.get("/message", (req, res) => {
+  res.sendFile(path.join(__dirname, "message.html"));
+});
+
+app.get("/user_detail", (req, res) => {
+  res.sendFile(path.join(__dirname, "user_detail.html"));
+});
+
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "login.html"));
 });
 
 app.listen(PORT, () => {

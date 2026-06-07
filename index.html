@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>簡易クラウドワークス - ホーム</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <h1>🤝 クラウドマッチ（簡易版）</h1>
+        <nav style="display: flex; align-items: center; gap: 10px">
+          <button
+            id="dark-mode-toggle"
+            class="btn-sub"
+            style="font-size: 16px; padding: 6px 12px"
+          >
+            🌙
+          </button>
+          <a href="/user_list" class="btn-sub">ユーザー一覧</a>
+          <a href="/profile_edit" class="btn-sub">プロフィール編集</a>
+          <a href="/login" class="btn-main">ログイン</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" style="flex-direction: column; gap: 30px">
+      <section class="content" style="max-width: 900px; width: 100%">
+        <h2>仕事仲間を見つける、すべてがここから始まる</h2>
+        <p style="margin: 16px 0; line-height: 1.8; color: var(--text-sub)">
+          クラウドマッチは、エンジニア・デザイナー・動画編集ライターなどの
+          フリーランスと発注者をつなぐシンプルなマッチングサービスです。
+          プロフィールを編集して、気になるユーザーにメッセージを送りましょう。
+        </p>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+          "
+        >
+          <a
+            href="/user_list"
+            class="user-card"
+            style="text-align: center; text-decoration: none; color: inherit"
+          >
+            <h3>ユーザー一覧</h3>
+            <p>登録中のユーザーを検索して、条件に合う人をすばやく見つける。</p>
+          </a>
+          <a
+            href="/profile_edit"
+            class="user-card"
+            style="text-align: center; text-decoration: none; color: inherit"
+          >
+            <h3>プロフィール編集</h3>
+            <p>自分のスキルやアピール文を更新して、依頼者にアピール。</p>
+          </a>
+          <a
+            href="/login"
+            class="user-card"
+            style="text-align: center; text-decoration: none; color: inherit"
+          >
+            <h3>ログイン</h3>
+            <p>Googleログインでスムーズにサインイン。今すぐ利用開始。</p>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const toggleBtn = document.getElementById("dark-mode-toggle");
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        toggleBtn.textContent = "☀️";
+      }
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        if (document.body.classList.contains("dark-mode")) {
+          toggleBtn.textContent = "☀️";
+          localStorage.setItem("darkMode", "enabled");
+        } else {
+          toggleBtn.textContent = "🌙";
+          localStorage.setItem("darkMode", "disabled");
+        }
+      });
+    </script>
+  </body>
+</html>

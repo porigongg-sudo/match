@@ -1,84 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>簡易クラウドワークス - ユーザー検索</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <div class="header-container">
-            <h1>🤝 クラウドマッチ（簡易版）</h1>
-            <nav style="display: flex; align-items: center; gap: 10px;">
-                <button id="dark-mode-toggle" class="btn-sub" style="font-size: 16px; padding: 6px 12px;">🌙</button>
-                
-                <a href="/profile_edit" class="btn-sub">プロフィール編集</a>
-                <button class="btn-main" id="login-btn">Googleでログイン</button>
-            </nav>
-        </div>
+      <div class="header-container">
+        <h1>🤝 クラウドマッチ（簡易版）</h1>
+        <nav style="display: flex; align-items: center; gap: 10px">
+          <button
+            id="dark-mode-toggle"
+            class="btn-sub"
+            style="font-size: 16px; padding: 6px 12px"
+          >
+            🌙
+          </button>
+          <a href="/" class="btn-sub">ホーム</a>
+          <a href="/profile_edit" class="btn-sub">プロフィール編集</a>
+          <button class="btn-main" id="login-btn">Googleでログイン</button>
+        </nav>
+      </div>
     </header>
 
     <main class="container">
-        
-        <aside class="sidebar">
-            <h3>カテゴリーで絞り込む</h3>
-            <ul id="category-list">
-                <li class="active">すべて表示</li>
-                <li>エンジニア</li>
-                <li>デザイナー</li>
-                <li>動画編集ライター</li>
-            </ul>
-        </aside>
+      <aside class="sidebar">
+        <h3>カテゴリーで絞り込む</h3>
+        <ul id="category-list">
+          <li class="active">すべて表示</li>
+          <li>エンジニア</li>
+          <li>デザイナー</li>
+          <li>動画編集ライター</li>
+        </ul>
+      </aside>
 
-        <section class="content">
-            <h2>登録ユーザー一覧</h2>
-            <div id="user-cards-container">
-                
-                <div class="user-card">
-                    <div class="user-header">
-                        <div class="avatar-sample"></div>
-                        <div>
-                            <h3>田中 太郎</h3>
-                            <p class="user-title">Webアプリケーションエンジニア</p>
-                        </div>
-                    </div>
-                    <p class="user-bio">Node.jsとMongoDBを使ったマッチングサービスの開発が得意です。お仕事募集中です！</p>
-                    <div class="user-skills">
-                        <span>JavaScript</span>
-                        <span>Node.js</span>
-                        <span>MongoDB</span>
-                    </div>
-                </div>
-
+      <section class="content">
+        <h2>登録ユーザー一覧</h2>
+        <div id="user-cards-container">
+          <div class="user-card">
+            <div class="user-header">
+              <div class="avatar-sample"></div>
+              <div>
+                <h3>田中 太郎</h3>
+                <p class="user-title">Webアプリケーションエンジニア</p>
+              </div>
             </div>
-        </section>
-
+            <p class="user-bio">
+              Node.jsとMongoDBを使ったマッチングサービスの開発が得意です。お仕事募集中です！
+            </p>
+            <div class="user-skills">
+              <span>JavaScript</span>
+              <span>Node.js</span>
+              <span>MongoDB</span>
+            </div>
+            <div style="margin-top: 16px">
+              <a
+                href="/user_detail"
+                class="btn-main"
+                style="text-decoration: none"
+                >詳細を見る</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <script>
-        const toggleBtn = document.getElementById('dark-mode-toggle');
-        
-        // 1. ページを開いた瞬間に、前回保存したダークモードの設定（enabled）があるかチェック
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-            toggleBtn.textContent = '☀️';
+      const toggleBtn = document.getElementById("dark-mode-toggle");
+      const loginBtn = document.getElementById("login-btn");
+
+      // 1. ページを開いた瞬間に、前回保存したダークモードの設定（enabled）があるかチェック
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        toggleBtn.textContent = "☀️";
+      }
+
+      toggleBtn.addEventListener("click", () => {
+        // bodyタグに「dark-mode」クラスをつけ外しする
+        document.body.classList.toggle("dark-mode");
+
+        // 2. 切り替えた状態をブラウザに保存（記憶）する
+        if (document.body.classList.contains("dark-mode")) {
+          toggleBtn.textContent = "☀️";
+          localStorage.setItem("darkMode", "enabled"); // ダークモードを保存
+        } else {
+          toggleBtn.textContent = "🌙";
+          localStorage.setItem("darkMode", "disabled"); // 解除を保存
         }
-        
-        toggleBtn.addEventListener('click', () => {
-            // bodyタグに「dark-mode」クラスをつけ外しする
-            document.body.classList.toggle('dark-mode');
-            
-            // 2. 切り替えた状態をブラウザに保存（記憶）する
-            if (document.body.classList.contains('dark-mode')) {
-                toggleBtn.textContent = '☀️';
-                localStorage.setItem('darkMode', 'enabled');  // ダークモードを保存
-            } else {
-                toggleBtn.textContent = '🌙';
-                localStorage.setItem('darkMode', 'disabled'); // 解除を保存
-            }
-        });
+      });
+
+      loginBtn.addEventListener("click", () => {
+        window.location.href = "/login";
+      });
     </script>
-</body>
+  </body>
 </html>

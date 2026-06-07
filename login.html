@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ログイン - クラウドマッチ</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <h1>🤝 クラウドマッチ（簡易版）</h1>
+        <nav style="display: flex; align-items: center; gap: 10px">
+          <button
+            id="dark-mode-toggle"
+            class="btn-sub"
+            style="font-size: 16px; padding: 6px 12px"
+          >
+            🌙
+          </button>
+          <a href="/" class="btn-sub">ホーム</a>
+          <a href="/user_list" class="btn-sub">ユーザー一覧</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" style="justify-content: center">
+      <section class="content" style="max-width: 600px; width: 100%">
+        <div class="user-card" style="text-align: center; padding: 40px">
+          <h2>ログイン</h2>
+          <p style="margin: 20px 0; color: var(--text-sub); line-height: 1.7">
+            Googleアカウントでのログインをシミュレートします。実際の認証は未実装ですが、
+            実装イメージとしてまとめています。
+          </p>
+          <button class="btn-main" style="width: 100%; max-width: 260px">
+            Googleでログイン
+          </button>
+          <p style="margin-top: 18px">
+            <a href="/" class="btn-sub" style="display: inline-block"
+              >ホームに戻る</a
+            >
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const toggleBtn = document.getElementById("dark-mode-toggle");
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        toggleBtn.textContent = "☀️";
+      }
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        if (document.body.classList.contains("dark-mode")) {
+          toggleBtn.textContent = "☀️";
+          localStorage.setItem("darkMode", "enabled");
+        } else {
+          toggleBtn.textContent = "🌙";
+          localStorage.setItem("darkMode", "disabled");
+        }
+      });
+    </script>
+  </body>
+</html>
