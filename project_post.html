@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>案件投稿 - クラウドマッチ</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <h1>🤝 クラウドマッチ（簡易版）</h1>
+        <nav style="display: flex; align-items: center; gap: 10px">
+          <button
+            id="dark-mode-toggle"
+            class="btn-sub"
+            style="font-size: 16px; padding: 6px 12px"
+          >
+            🌙
+          </button>
+          <a href="/" class="btn-sub">ホーム</a>
+          <a href="/user_list" class="btn-sub">ユーザー一覧</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" style="justify-content: center">
+      <section class="content" style="max-width: 700px; width: 100%">
+        <div class="user-card" style="padding: 30px">
+          <h2
+            style="
+              margin-bottom: 25px;
+              border-bottom: 2px solid var(--border-color);
+              padding-bottom: 10px;
+            "
+          >
+            案件投稿
+          </h2>
+          <form action="/api/project" method="POST">
+            <div style="margin-bottom: 20px">
+              <label
+                style="display: block; font-weight: bold; margin-bottom: 8px"
+                >案件タイトル</label
+              >
+              <input
+                type="text"
+                name="title"
+                required
+                placeholder="例：Reactで簡単な管理画面を作りたい"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border-radius: 6px;
+                  border: 1px solid var(--border-color);
+                  background: var(--bg-body);
+                  color: var(--text-main);
+                "
+              />
+            </div>
+            <div style="margin-bottom: 20px">
+              <label
+                style="display: block; font-weight: bold; margin-bottom: 8px"
+                >職種</label
+              >
+              <select
+                name="category"
+                required
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border-radius: 6px;
+                  border: 1px solid var(--border-color);
+                  background: var(--bg-body);
+                  color: var(--text-main);
+                "
+              >
+                <option value="エンジニア">エンジニア</option>
+                <option value="デザイナー">デザイナー</option>
+                <option value="動画編集ライター">動画編集ライター</option>
+              </select>
+            </div>
+            <div style="margin-bottom: 20px">
+              <label
+                style="display: block; font-weight: bold; margin-bottom: 8px"
+                >予算</label
+              >
+              <input
+                type="text"
+                name="budget"
+                placeholder="例：5〜10万円"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border-radius: 6px;
+                  border: 1px solid var(--border-color);
+                  background: var(--bg-body);
+                  color: var(--text-main);
+                "
+              />
+            </div>
+            <div style="margin-bottom: 20px">
+              <label
+                style="display: block; font-weight: bold; margin-bottom: 8px"
+                >詳細</label
+              >
+              <textarea
+                name="description"
+                rows="5"
+                placeholder="案件の内容や希望条件を入力してください。"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border-radius: 6px;
+                  border: 1px solid var(--border-color);
+                  background: var(--bg-body);
+                  color: var(--text-main);
+                  line-height: 1.6;
+                "
+              ></textarea>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 10px">
+              <a
+                href="/user_list"
+                class="btn-sub"
+                style="display: inline-block; line-height: 20px"
+                >一覧へ戻る</a
+              >
+              <button type="submit" class="btn-main">投稿する</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const toggleBtn = document.getElementById("dark-mode-toggle");
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        toggleBtn.textContent = "☀️";
+      }
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        if (document.body.classList.contains("dark-mode")) {
+          toggleBtn.textContent = "☀️";
+          localStorage.setItem("darkMode", "enabled");
+        } else {
+          toggleBtn.textContent = "🌙";
+          localStorage.setItem("darkMode", "disabled");
+        }
+      });
+    </script>
+  </body>
+</html>

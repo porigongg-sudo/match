@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>新規登録 - クラウドマッチ</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <h1>🤝 クラウドマッチ（簡易版）</h1>
+        <nav style="display: flex; align-items: center; gap: 10px">
+          <button
+            id="dark-mode-toggle"
+            class="btn-sub"
+            style="font-size: 16px; padding: 6px 12px"
+          >
+            🌙
+          </button>
+          <a href="/" class="btn-sub">ホーム</a>
+          <a href="/login" class="btn-sub">ログイン</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" style="justify-content: center">
+      <section class="content" style="max-width: 600px; width: 100%">
+        <div class="user-card" style="padding: 30px">
+          <h2
+            style="
+              margin-bottom: 25px;
+              border-bottom: 2px solid var(--border-color);
+              padding-bottom: 10px;
+            "
+          >
+            新規登録
+          </h2>
+          <form action="/api/signup" method="POST">
+            <div style="margin-bottom: 20px">
+              <label
+                style="display: block; font-weight: bold; margin-bottom: 8px"
+                >名前</label
+              >
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder="例：田中 太郎"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border-radius: 6px;
+                  border: 1px solid var(--border-color);
+                  background: var(--bg-body);
+                  color: var(--text-main);
+                "
+              />
+            </div>
+            <div style="margin-bottom: 20px">
+              <label
+                style="display: block; font-weight: bold; margin-bottom: 8px"
+                >メールアドレス</label
+              >
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="example@mail.com"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border-radius: 6px;
+                  border: 1px solid var(--border-color);
+                  background: var(--bg-body);
+                  color: var(--text-main);
+                "
+              />
+            </div>
+            <div style="margin-bottom: 20px">
+              <label
+                style="display: block; font-weight: bold; margin-bottom: 8px"
+                >パスワード</label
+              >
+              <input
+                type="password"
+                name="password"
+                required
+                placeholder="8文字以上"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border-radius: 6px;
+                  border: 1px solid var(--border-color);
+                  background: var(--bg-body);
+                  color: var(--text-main);
+                "
+              />
+            </div>
+            <div style="margin-bottom: 20px">
+              <label
+                style="display: block; font-weight: bold; margin-bottom: 8px"
+                >メイン職種</label
+              >
+              <select
+                name="role"
+                required
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border-radius: 6px;
+                  border: 1px solid var(--border-color);
+                  background: var(--bg-body);
+                  color: var(--text-main);
+                "
+              >
+                <option value="エンジニア">エンジニア</option>
+                <option value="デザイナー">デザイナー</option>
+                <option value="動画編集ライター">動画編集ライター</option>
+              </select>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 10px">
+              <a
+                href="/login"
+                class="btn-sub"
+                style="display: inline-block; line-height: 20px"
+                >ログインへ</a
+              >
+              <button type="submit" class="btn-main">登録する</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const toggleBtn = document.getElementById("dark-mode-toggle");
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        toggleBtn.textContent = "☀️";
+      }
+      toggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        if (document.body.classList.contains("dark-mode")) {
+          toggleBtn.textContent = "☀️";
+          localStorage.setItem("darkMode", "enabled");
+        } else {
+          toggleBtn.textContent = "🌙";
+          localStorage.setItem("darkMode", "disabled");
+        }
+      });
+    </script>
+  </body>
+</html>

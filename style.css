@@ -1,177 +1,193 @@
 /* --- 色の設計図（変数）の設定 --- */
 :root {
-    --bg-body: #f7e7f0;       /* 全体の背景（薄いピンク） */
-    --bg-card: #ffffff;       /* カードやヘッダーの背景（白） */
-    --text-main: #0f172a;     /* メインの文字色（紺） */
-    --text-sub: #5f6f96;      /* 補足の文字色（やや淡い紺） */
-    --border-color: #d8c2d4;  /* 線の色（薄いピンク寄り） */
-    --bg-hover: #f0d5e1;      /* ホバー時の背景（薄いピンク） */
-    --text-link: #0f1f47;     /* リンクやアクティブの色（濃紺） */
+  --bg-body: #ffffff; /* 全体の背景（白） */
+  --bg-card: #ffffff; /* カードやヘッダーの背景（白） */
+  --nav-bg: #0c1a47; /* ヘッダー・サイドバーの背景（濃紺） */
+  --nav-text: #ffffff; /* ヘッダー・サイドバーの文字（白） */
+  --text-main: #0f172a; /* メインの文字色（紺） */
+  --text-sub: #5f6f96; /* 補足の文字色（やや淡い紺） */
+  --border-color: #d9e1ef; /* 線の色（薄い青みのグレー） */
+  --bg-hover: #f1f5ff; /* ホバー時の背景（薄い青み） */
+  --text-link: #0b1b44; /* リンクやアクティブの色（濃紺） */
 }
 
 /* 🌙 ダークモード用の色の設計図（このクラスがつくと色が一変します） */
 body.dark-mode {
-    --bg-body: #09142d;       /* 全体の背景（濃い紺） */
-    --bg-card: #14244c;       /* カードやヘッダーの背景（少し明るい紺） */
-    --text-main: #f7d6e0;     /* メインの文字色（薄いピンク） */
-    --text-sub: #d8b5cc;      /* 補足の文字色（ピンク寄り） */
-    --border-color: #2a3c6c;  /* 線の色（暗めの紺） */
-    --bg-hover: #233762;      /* ホバー時の背景（深い紺） */
-    --text-link: #f7c6d8;     /* リンクやアクティブの色（薄いピンク） */
+  --bg-body: #06112c; /* 全体の背景（濃い紺） */
+  --bg-card: #11213f; /* カードやヘッダーの背景（深い紺） */
+  --nav-bg: #06122a; /* ヘッダー・サイドバーの背景（より濃い紺） */
+  --nav-text: #ffffff; /* ヘッダー・サイドバーの文字（白） */
+  --text-main: #f7f8ff; /* メインの文字色（淡い白） */
+  --text-sub: #b9c1dc; /* 補足の文字色（薄い青み） */
+  --border-color: #20385f; /* 線の色（暗めの紺） */
+  --bg-hover: #213b69; /* ホバー時の背景（深い紺） */
+  --text-link: #b2d4ff; /* リンクやアクティブの色（淡い青） */
 }
 
 /* 全体のリセット（ここからは色の変数を使います） */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    transition: background-color 0.3s ease, color 0.3s ease; /* 切り替えを滑らかにする魔法 */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease; /* 切り替えを滑らかにする魔法 */
 }
 
 body {
-    background-color: var(--bg-body);
-    color: var(--text-main);
+  background-color: var(--bg-body);
+  color: var(--text-main);
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  gap: 30px;
 }
 
 /* ヘッダー */
 header {
-    background-color: var(--bg-card);
-    border-bottom: 1px solid var(--border-color);
-    padding: 15px 0;
+  background-color: var(--nav-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 15px 0;
+  color: var(--nav-text);
 }
 
 .header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 h1 {
-    font-size: 20px;
-    color: var(--text-link);
+  font-size: 20px;
+  color: var(--nav-text);
+}
+
+header a,
+header button {
+  color: var(--nav-text);
 }
 
 /* ボタン */
-button, .btn-main, .btn-sub {
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 14px;
+button,
+.btn-main,
+.btn-sub {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .btn-main {
-    background-color: var(--text-link);
-    color: white;
-    border: none;
+  background-color: var(--text-link);
+  color: white;
+  border: none;
 }
 
 .btn-sub {
-    background-color: transparent;
-    color: var(--text-main);
-    border: 1px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
 }
 
 /* サイドバー（カテゴリー） */
 .sidebar {
-    width: 250px;
-    background: var(--bg-card);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    height: fit-content;
+  width: 250px;
+  background: var(--nav-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  height: fit-content;
 }
 
 .sidebar h3 {
-    font-size: 16px;
-    margin-bottom: 15px;
-    color: var(--text-main);
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: var(--nav-text);
 }
 
 .sidebar ul {
-    list-style: none;
+  list-style: none;
 }
 
 .sidebar li {
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-bottom: 5px;
-    font-size: 14px;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: var(--nav-text);
 }
 
-.sidebar li:hover, .sidebar li.active {
-    background-color: var(--bg-hover);
-    color: var(--text-link);
-    font-weight: bold;
+.sidebar li:hover,
+.sidebar li.active {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--nav-text);
+  font-weight: bold;
 }
 
 /* ユーザー一覧 */
 .content {
-    flex: 1;
+  flex: 1;
 }
 
 .content h2 {
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: var(--text-main);
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: var(--text-main);
 }
 
 /* ユーザーカード */
 .user-card {
-    background: var(--bg-card);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
 .user-header {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-    margin-bottom: 15px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .avatar-sample {
-    width: 50px;
-    height: 50px;
-    background-color: var(--border-color);
-    border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: var(--border-color);
+  border-radius: 50%;
 }
 
 .user-title {
-    font-size: 13px;
-    color: var(--text-sub);
-    margin-top: 2px;
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-top: 2px;
 }
 
 .user-bio {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text-main);
-    margin-bottom: 15px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-main);
+  margin-bottom: 15px;
 }
 
 .user-skills span {
-    background-color: var(--bg-body);
-    color: var(--text-sub);
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    margin-right: 5px;
-    border: 1px solid var(--border-color);
+  background-color: var(--bg-body);
+  color: var(--text-sub);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-right: 5px;
+  border: 1px solid var(--border-color);
 }
